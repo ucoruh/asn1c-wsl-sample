@@ -1,0 +1,54 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C: windows gcc.exe build all",
+			"command": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-I.",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic",
+				"*.c"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: \"C:\\Program Files\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe\""
+		},
+		{
+			"type": "cppbuild",
+			"label": "C: wsl gcc.exe build all",
+			"command": "gcc",
+			"args": [
+				"-g",
+				"-I${workspaceFolder}",
+				"-o",
+				"${workspaceFolder}//rectangle-decoder.out",
+				"${workspaceFolder}/*.c"
+			],
+			"options": {
+				"pwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: \"//usr//bin//gcc\""
+		}
+	]
+}
