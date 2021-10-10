@@ -44,6 +44,10 @@ Or you can just use following in windows git console
 git clone https://github.com/vlm/asn1c
 ```
 
+Eurecom version : [oai / asn1c · GitLab](https://gitlab.eurecom.fr/oai/asn1c.git)
+
+
+
 Enter the asn1c folder in WSL, in my case it will look like following located on desktop
 
 ```batch
@@ -1184,32 +1188,32 @@ CTRL+SHIFT+P
 
 ```yaml
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "cppbuild",
-			"label": "C: wsl gcc.exe build all",
-			"command": "gcc",
-			"args": [
-				"-g",
-				"-I${workspaceFolder}",
-				"-o",
-				"${workspaceFolder}//rectangle-decoder.out",
-				"${workspaceFolder}/*.c"
-			],
-			"options": {
-				"pwd": "${fileDirname}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compiler: \"//usr//bin//gcc\""
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C: wsl gcc.exe build all",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-I${workspaceFolder}",
+                "-o",
+                "${workspaceFolder}//rectangle-decoder.out",
+                "${workspaceFolder}/*.c"
+            ],
+            "options": {
+                "pwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: \"//usr//bin//gcc\""
+        }
+    ]
 }
 ```
 
@@ -1258,8 +1262,6 @@ In this setting we target the rectangle-decoder.out, do not forget the refresh b
 
 > You can open terminal in vscode and access WSL environment but its a bit slow. 
 
-
-
 If you run task, terminal will process following command for building binary
 
 ```batch
@@ -1295,58 +1297,58 @@ Tasks.json file with both Linux and Windows will be like that
 
 ```yaml
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "cppbuild",
-			"label": "C: windows gcc.exe build all",
-			"command": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
-			"args": [
-				"-fdiagnostics-color=always",
-				"-I.",
-				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe",
-				"-Wall",
-				"-Wextra",
-				"-Wpedantic",
-				"*.c"
-			],
-			"options": {
-				"cwd": "${fileDirname}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compiler: \"C:\\Program Files\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe\""
-		},
-		{
-			"type": "cppbuild",
-			"label": "C: wsl gcc.exe build all",
-			"command": "gcc",
-			"args": [
-				"-g",
-				"-I${workspaceFolder}",
-				"-o",
-				"${workspaceFolder}//rectangle-decoder.out",
-				"${workspaceFolder}/*.c"
-			],
-			"options": {
-				"pwd": "${fileDirname}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "compiler: \"//usr//bin//gcc\""
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C: windows gcc.exe build all",
+            "command": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-I.",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic",
+                "*.c"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: \"C:\\Program Files\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe\""
+        },
+        {
+            "type": "cppbuild",
+            "label": "C: wsl gcc.exe build all",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-I${workspaceFolder}",
+                "-o",
+                "${workspaceFolder}//rectangle-decoder.out",
+                "${workspaceFolder}/*.c"
+            ],
+            "options": {
+                "pwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: \"//usr//bin//gcc\""
+        }
+    ]
 }
 ```
 
@@ -1421,14 +1423,12 @@ Launch.json also will like that for Windows and WSL (There is one more configura
 }
 ```
 
-
-
 with this setup if you try to build your code you have to fix something in skeleton files
 
 <mark>asn_system.h </mark>after _WIN32_ flag insert following definitions.
 
 ```c
-#ifdef	_WIN32
+#ifdef    _WIN32
 
 #define PRIuMAX "llu"
 #define PRIdMAX "lld"
