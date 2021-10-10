@@ -46,8 +46,6 @@ git clone https://github.com/vlm/asn1c
 
 Eurecom version : [oai / asn1c · GitLab](https://gitlab.eurecom.fr/oai/asn1c.git)
 
-
-
 Enter the asn1c folder in WSL, in my case it will look like following located on desktop
 
 ```batch
@@ -1284,6 +1282,8 @@ Specify filename for BER output
 ## Build, Run and Debug with VsCode on Windows
 
 You should install mingw-w64 for GCC and set this required paths on launch.json and tasks.json for vscode
+
+mingw-w64 installation steps are explained in [GitHub - ucoruh/gcc-c-on-visual-studio: Development of C with GCC by Using Visual Studio Community Edition](https://github.com/ucoruh/gcc-c-on-visual-studio) .
 
 In my case my installation folder is 
 
