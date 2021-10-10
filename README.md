@@ -1484,4 +1484,8 @@ Specify filename for BER output
 PS C:\Users\ugur.coruh\Desktop\asn1c-wsl-sample\rectangle-sample>
 ```
 
+for visual studio community edition you can check [Using MinGW and Cygwin with Visual C++ and Open Folder - C++ Team Blog](https://devblogs.microsoft.com/cppblog/using-mingw-and-cygwin-with-visual-cpp-and-open-folder/) and you can update task for visual studio.
+
+
+
 Thats all...
