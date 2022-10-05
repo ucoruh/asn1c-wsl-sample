@@ -1162,6 +1162,24 @@ in WSL console enter project working directory and open vscode with
 code .
 ```
 
+### VsCode Remote Development Error Bugfixing
+
+If you do not have the following remote development extension on vscode you may have problem about connecting to WSL 
+
+![](assets/2022-10-05-21-08-54-image.png)
+
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
+
+
+
+and install the following extension also
+
+![](assets/2022-10-05-21-09-09-image.png)
+
+https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
+
+
+
 ## Build, Run and Debug with VsCode on WSL
 
 Run following command in WSL and source folder
@@ -1485,7 +1503,5 @@ PS C:\Users\ugur.coruh\Desktop\asn1c-wsl-sample\rectangle-sample>
 ```
 
 for visual studio community edition you can check [Using MinGW and Cygwin with Visual C++ and Open Folder - C++ Team Blog](https://devblogs.microsoft.com/cppblog/using-mingw-and-cygwin-with-visual-cpp-and-open-folder/) and you can update task for visual studio.
-
-
 
 Thats all...
