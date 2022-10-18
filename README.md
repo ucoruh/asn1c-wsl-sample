@@ -93,7 +93,17 @@ Run
 gem install cover
 ```
 
-If you <mark>get error</mark> in this step this will related with gem installation just read the error and copy advised command for gem installation and then retry
+If you <mark>get error</mark> in this step this will related with gem installation just read the error and copy advised command for gem installation and then retry.
+
+
+
+> If you have error during gem installation please try it with sudo
+> 
+> ```bash
+> sudo gem install cover
+> ```
+
+
 
 ## Step-4 Configure and Compile ASN1C from Source
 
@@ -119,7 +129,13 @@ Date:   Fri May 22 01:29:10 2020 +0200
     Improve test coverage by using stderr output in test evaluation of parser and AST testing.
 ```
 
-Then start configuration...
+Install autconf package (if you do not have)
+
+```bash
+sudo apt-get install autoconf
+```
+
+Then start configuration.
 
 ```batch
 autoreconf -iv
@@ -156,6 +172,10 @@ parallel-tests: installing 'config/test-driver'
 asn1-tools/enber/Makefile.am: installing 'config/depcomp'
 autoreconf: Leaving directory `.'
 ```
+
+
+
+
 
 If this success run following command
 
@@ -1170,15 +1190,11 @@ If you do not have the following remote development extension on vscode you may 
 
 https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
 
-
-
 and install the following extension also
 
 ![](assets/2022-10-05-21-09-09-image.png)
 
 https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
-
-
 
 ## Build, Run and Debug with VsCode on WSL
 
@@ -1490,7 +1506,7 @@ When we run task it process following command in terminal
 "C:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin\gcc.exe" -fdiagnostics-color=always -I. -o C:\Users\ugur.coruh\Desktop\asn1c-wsl-sample\rectangle-sample\main.exe -Wall -Wextra -Wpedantic *.c
 ```
 
-If we run exe we can see output 
+If we run exe we can see output
 
 ```batch
 PS C:\Users\ugur.coruh\Desktop\asn1c-wsl-sample\rectangle-sample> .\main.exe
