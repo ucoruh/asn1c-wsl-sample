@@ -107,7 +107,7 @@ If you <mark>get error</mark> in this step this will related with gem installati
 
 ## Step-4 Configure and Compile ASN1C from Source
 
-There is a bug that related with DOS or UNIX file format in configure.ac file in asn1c folder use following commands to fix this issue (this solved problem in my case)
+There is a bug that related with DOS or UNIX file format in `configure.ac` file in asn1c folder use following commands to fix this issue (this solved problem in my case)
 
 ```batch
 git config core.autocrlf false
@@ -172,8 +172,6 @@ parallel-tests: installing 'config/test-driver'
 asn1-tools/enber/Makefile.am: installing 'config/depcomp'
 autoreconf: Leaving directory `.'
 ```
-
-
 
 
 
@@ -1201,10 +1199,12 @@ https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
 Run following command in WSL and source folder
 
 ```batch
-gcc -I. -o rectangle-decoder.out *.c
+gcc -I. -DPDU=Rectangle -o rectangle-decoder.out *.c
 ```
 
 This will provide an executable for decoder sample. 
+
+
 
 If you get error for missing files please copy them to source folder from skeletons folders.
 
@@ -1521,3 +1521,69 @@ PS C:\Users\ugur.coruh\Desktop\asn1c-wsl-sample\rectangle-sample>
 for visual studio community edition you can check [Using MinGW and Cygwin with Visual C++ and Open Folder - C++ Team Blog](https://devblogs.microsoft.com/cppblog/using-mingw-and-cygwin-with-visual-cpp-and-open-folder/) and you can update task for visual studio.
 
 Thats all...
+
+
+
+## Troubleshooting Guide
+
+### #error Define -DPDU to compile this example converter
+
+```bash
+converter-example.c:42:2: error: #error Define -DPDU to compile this example converter.
+   42 | #error Define -DPDU to compile this example converter.
+      |  ^~~~~
+converter-example.c:43:2: error: #error `asn1c -pdu=...` adds necessary flags automatically.
+   43 | #error `asn1c -pdu=...` adds necessary flags automatically.
+```
+
+You need to define -DPDU definition as follow. This PDU is can be Rectangle or Circle according to your asn file
+
+`cc -DPDU=Circle -I. -o CircleDecoder.exe *.c`
+
+- Command-Option-1
+
+```shell
+gcc -I. -DPDU=Rectangle -o rectangle-decoder.out *.c
+```
+
+- Command-Option-2
+
+```shell
+gcc -I. -DPDU=all -o rectangle-decoder.out *.c
+```
+
+- Command-Option-3
+
+```shell
+gcc -I. -DPDU=auto -o rectangle-decoder.out *.c
+```
+
+---
+
+In the user guide, you can see usage as follow.
+
+https://lionet.info/asn1c/asn1c-usage.pdf
+
+```shell
+  asn1c *.asn1 cc -I. -DPDU=Rectangle -o rectangle.exe *.c # ... or like this
+```
+
+Also, this error was generated with the following code in the converter **example.c**
+
+```c
+#ifndef NO_ASN_PDU#if !defined(PDU) && !defined(ASN_PDU_COLLECTION)#error Define -DPDU to compile this example converter.#error `asn1c -pdu=...` adds necessary flags automatically.#endif
+#endif
+```
+
+- If you use the asnc1 tool that you installed you can use it as follow. But you have `-pdu=all` or `-pdu=auto` options also  
+  `asn1c -pdu=Rectangle *.asn1`
+
+```c
+ fprintf(stderr, "-pdu=%s: expected -pdu={all|auto|Type}\n", pduname);
+```
+
+In the Change Logs
+
+> 0.9.22: 2008-Nov-19
+> 
+> - Added -pdu=all and -pdu= switches to asn1c.
